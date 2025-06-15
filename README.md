@@ -2,6 +2,10 @@
 
 A sophisticated business intelligence dashboard built with React and TypeScript that demonstrates advanced filtering capabilities with real-time data interactions, similar to e-commerce filter systems.
 
+## 🌐 Live Demo
+
+**Deployed Application**: [https://frontendfilteroptimization.netlify.app/](https://frontendfilteroptimization.netlify.app/)
+
 ## 🚀 Features
 
 ### Core Functionality
