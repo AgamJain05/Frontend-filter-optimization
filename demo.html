@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Filter Optimization Demo</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .demo-note {
+            background: #fff3cd;
+            color: #856404;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border: 1px solid #ffeaa7;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .feature {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .feature h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        .feature ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        .feature li {
+            margin-bottom: 0.5rem;
+        }
+        .start-btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+        .start-btn:hover {
+            background: #5a6fd8;
+        }
+        .tech-stack {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .tech-stack h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .tech-item {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Frontend Filter Optimization Dashboard</h1>
+        <p>Advanced Business Intelligence Dashboard with Cross-Filter Interactions</p>
+    </div>
+
+    <div class="demo-note">
+        <strong>🚀 Project Status:</strong> The React application is building. To start the development server, run <code>npm start</code> in the terminal. The app will be available at <code>http://localhost:3000</code> once it's ready.
+    </div>
+
+    <div class="features">
+        <div class="feature">
+            <h3>🎯 Core Features</h3>
+            <ul>
+                <li>Dynamic data table with pagination (100 rows/page)</li>
+                <li>Multi-select filter dropdowns for each column</li>
+                <li>Real-time cross-filter interactions</li>
+                <li>Search functionality within filters</li>
+                <li>Smooth scrolling with 20 visible entries</li>
+                <li>Millisecond response times</li>
+            </ul>
+        </div>
+
+        <div class="feature">
+            <h3>⚡ Advanced Filtering</h3>
+            <ul>
+                <li>Filter options update dynamically based on selections</li>
+                <li>Cross-filter logic similar to e-commerce sites</li>
+                <li>Preserves current selections while updating options</li>
+                <li>Debounced updates for performance</li>
+                <li>Performance monitoring with real-time metrics</li>
+            </ul>
+        </div>
+
+        <div class="feature">
+            <h3>📊 Dataset Support</h3>
+            <ul>
+                <li><strong>Small Dataset:</strong> ~10,000 rows (mod3, mod4, mod5, mod6)</li>
+                <li><strong>Large Dataset:</strong> ~50,000 rows (mod350, mod8000, mod20002)</li>
+                <li>CSV-based data loading</li>
+                <li>Automatic column detection and typing</li>
+                <li>Performance validation on large datasets</li>
+            </ul>
+        </div>
+
+        <div class="feature">
+            <h3>🎨 User Experience</h3>
+            <ul>
+                <li>Modern, responsive design</li>
+                <li>Intuitive filter interface</li>
+                <li>Real-time performance metrics display</li>
+                <li>Loading states and error handling</li>
+                <li>Accessible keyboard navigation</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="tech-stack">
+        <h3>🛠 Technology Stack</h3>
+        <div class="tech-list">
+            <span class="tech-item">React 18</span>
+            <span class="tech-item">TypeScript</span>
+            <span class="tech-item">Context API</span>
+            <span class="tech-item">Performance Optimized</span>
+            <span class="tech-item">Responsive Design</span>
+            <span class="tech-item">Jest Testing</span>
+            <span class="tech-item">CSV Processing</span>
+            <span class="tech-item">Cross-Filter Logic</span>
+        </div>
+    </div>
+
+    <div style="text-align: center;">
+        <a href="http://localhost:3000" class="start-btn" id="launchBtn">
+            🚀 Launch Application
+        </a>
+        <p style="margin-top: 1rem; color: #666;">
+            Make sure to run <code>npm start</code> first, then click the button above.
+        </p>
+    </div>
+
+    <script>
+        // Check if the React app is running
+        document.getElementById('launchBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Try to open the React app
+            fetch('http://localhost:3000')
+                .then(response => {
+                    if (response.ok) {
+                        window.open('http://localhost:3000', '_blank');
+                    } else {
+                        throw new Error('React app not running');
+                    }
+                })
+                .catch(error => {
+                    alert('The React application is not running yet. Please run "npm start" in the terminal first, then try again.');
+                });
+        });
+    </script>
+</body>
+</html>
