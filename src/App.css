@@ -398,7 +398,7 @@ body {
 
 .data-table__container {
   overflow-x: auto;
-  max-height: 600px;
+  max-height: 760px; /* Exact calculation: 40px header + 20 × 36px rows */
   overflow-y: auto;
 }
 
@@ -414,13 +414,15 @@ body {
   position: sticky;
   top: 0;
   z-index: 10;
+  height: 40px; /* Fixed height for header */
 }
 
 .data-table__th {
-  padding: 1rem;
+  padding: 0.75rem 1rem; /* Reduced padding for more compact header */
   text-align: left;
   font-weight: 600;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
+  line-height: 1.4; /* Fixed line height for consistent header height */
 }
 
 .data-table__th:last-child {
@@ -433,6 +435,7 @@ body {
 
 .data-table__tr {
   transition: background-color 0.2s;
+  height: 36px; /* Fixed height for consistent rows */
 }
 
 .data-table__tr:nth-child(even) {
@@ -444,9 +447,10 @@ body {
 }
 
 .data-table__td {
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem; /* Reduced padding for more compact rows */
   border-bottom: 1px solid #dee2e6;
   border-right: 1px solid #dee2e6;
+  line-height: 1.4; /* Fixed line height for consistent row heights */
 }
 
 .data-table__td:last-child {

@@ -7,8 +7,7 @@ const DataTable: React.FC<DataTableProps> = ({
   currentPage,
   itemsPerPage,
   onPageChange
-}) => {
-  // Calculate pagination
+}) => {  // Calculate pagination
   const paginationInfo = useMemo(() => {
     const totalItems = data.length;
     const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -27,9 +26,8 @@ const DataTable: React.FC<DataTableProps> = ({
     };
   }, [data, currentPage, itemsPerPage]);
 
-  // Display only first 20 items at a time for smooth scrolling
-  const visibleItemsPerScroll = 20;
-  const visibleData = paginationInfo.currentData.slice(0, visibleItemsPerScroll);
+  // Show all data for current page (up to 100 rows) in scrollable container
+  const currentPageData = paginationInfo.currentData;
 
   // Handle page navigation
   const handlePrevPage = () => {
@@ -97,10 +95,9 @@ const DataTable: React.FC<DataTableProps> = ({
 
   return (
     <div className="data-table">
-      <div className="data-table__header">
-        <div className="data-table__info">
+      <div className="data-table__header">        <div className="data-table__info">
           <span className="data-table__count">
-            Showing {paginationInfo.startIndex + 1} - {Math.min(paginationInfo.startIndex + visibleItemsPerScroll, paginationInfo.endIndex)} of {paginationInfo.totalItems} entries
+            Showing {paginationInfo.startIndex + 1} - {paginationInfo.endIndex} of {paginationInfo.totalItems} entries
           </span>
         </div>
       </div>
@@ -115,9 +112,8 @@ const DataTable: React.FC<DataTableProps> = ({
                 </th>
               ))}
             </tr>
-          </thead>
-          <tbody className="data-table__tbody">
-            {visibleData.map((row, index) => (
+          </thead>          <tbody className="data-table__tbody">
+            {currentPageData.map((row, index) => (
               <tr key={paginationInfo.startIndex + index} className="data-table__tr">
                 {columns.map((column) => (
                   <td key={column.key} className="data-table__td">
@@ -167,21 +163,6 @@ const DataTable: React.FC<DataTableProps> = ({
             className="data-table__pagination-btn data-table__pagination-btn--next"
           >
             Next
-          </button>
-        </div>
-      )}
-
-      {paginationInfo.currentData.length > visibleItemsPerScroll && (
-        <div className="data-table__scroll-info">
-          <p>Showing first {visibleItemsPerScroll} entries of {paginationInfo.currentData.length} on this page</p>
-          <button 
-            className="data-table__show-more"
-            onClick={() => {
-              // This could be extended to show more items
-              console.log('Show more functionality can be implemented here');
-            }}
-          >
-            Scroll to see more
           </button>
         </div>
       )}
